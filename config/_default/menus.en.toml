@@ -1,0 +1,72 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "Home"
+url = ""
+weight = 1
+
+[[main]]
+name = "Solutions"
+url = "#solutions"
+weight = 2
+
+[[main]]
+parent = "Solutions"
+name = "By Industry"
+url = "industry/"
+weight = 1
+
+[[main]]
+parent = "Solutions"
+name = "By Regulation"
+url = "regulation/"
+weight = 2
+
+[[main]]
+name = "Resources"
+url = "service/"
+weight = 3
+
+[[main]]
+parent = "Resources"
+name = "Blog"
+url = "blog/"
+weight = 1
+
+[[main]]
+parent = "Resources"
+name = "Faq"
+url = "faqs/"
+weight = 2
+
+
+
+[[main]]
+name = "Company"
+url = "company/"
+weight = 4
+
+[[main]]
+parent = "Company"
+name = "About Us"
+url = "about/"
+weight = 1
+
+[[main]]
+parent = "Company"
+name = "Careers"
+url = "careers/"
+weight = 2
+
+
+# footer menu
+[[footer]]
+name = "Ray"
+url = "http://ray-webarchiving.com/"
+weight = 1
+
+[[footer]]
+name = "Ken"
+url = "https://ken-webarchiving.com/"
+weight = 2

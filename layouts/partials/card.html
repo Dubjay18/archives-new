@@ -1,0 +1,32 @@
+<div class="job-card card mb-4" 
+     data-department="{{ delimit .Params.departments ',' }}" 
+     data-location="{{ delimit .Params.locations ',' }}" 
+     data-type="{{ delimit .Params.types ',' }}">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h2 class="h4 mb-2">
+          <a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a>
+        </h2>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          {{ range .Params.types }}
+          <span class="badge bg-primary text-white rounded-3 p-2">{{ . }}</span>
+          {{ end }}
+          {{ range .Params.locations }}
+          <span class="badge bg-secondary text-white rounded-3 p-2">{{ . }}</span>
+          {{ end }}
+          {{ range .Params.departments }}
+          <span class="badge bg-info text-white rounded-3 p-2">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="text-end">
+        <div class="text-muted small">Closes: {{ .Params.closing_date | time.Format "Jan 2, 2006" }}</div>
+      </div>
+    </div>
+    <a href="{{ .RelPermalink }}" class="btn btn-outline-primary btn-sm mt-2">View Details</a>
+    {{ if .Params.apply_url }}
+    <a href="{{ .Params.apply_url }}" class="btn btn-primary btn-sm mt-2 ms-2">Apply Now</a>
+    {{ end }}
+  </div>
+</div>

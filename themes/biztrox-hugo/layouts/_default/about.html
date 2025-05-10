@@ -1,0 +1,45 @@
+{{ define "main" }}
+
+
+{{with .Params.locations}}
+   <!-- Contact Section -->
+   <div class="col-12 container mx-auto">
+	<div class="card mb-5">
+	  <div class="card-body">
+
+
+		<div class="row">
+			{{ range . }}
+		  <!-- Office Locations -->
+		  <div class="col-md-4">
+			<div class="map-container d-flex flex-column" style="min-height: 300px;">
+			{{ $image := resources.Get .image }}
+			{{ if $image }}
+				<img src="{{ $image.RelPermalink }}" alt="{{ .alt }}" style="min-height: 250px;"class="img-fluid rounded shadow">
+			{{ else }}
+				<img src="{{ .image }}" alt="{{ .alt }}" class="img-fluid rounded shadow">
+			{{ end }}
+			  <div class="map-note small text-muted mt-auto">
+				Location map of {{ .name }}
+			  </div>
+			</div>
+		  </div>
+		  {{end}}
+
+
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  {{end}}
+
+  <!-- Contact Section -->
+  <div class="col-12 container d-flex justify-content-center items-center mb-5 mx-auto">
+<button class="btn btn-primary">Contact Us</button>
+
+</div>
+
+  <iframe style="min-height: 500px;" class="col-12 container d-flex justify-content-center items-center mb-5 mx-auto"src="https://www.google.com/maps/d/embed?mid=14d9arh-IJcIlJG8lvCPUlPQ72EVA7t_2"></iframe>
+
+{{ end }}

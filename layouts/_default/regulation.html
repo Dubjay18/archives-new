@@ -1,0 +1,161 @@
+{{ define "main" }}
+
+{{ with .Params.compliance }}
+{{ if .enable }}
+{{ "<!-- philosophy -->" | safeHTML }}
+<section class="section">
+	<div class="container">
+		<div class="row">
+            <div class="col-lg-7 order-2 order-lg-1">
+                <span class="section-title-sm h5">{{ .subtitle | markdownify }}</span>
+                <h2 class="section-title section-title-border-half">{{ .title | markdownify }}</h2>
+                <p>{{ .content | markdownify }}</p>
+                {{ if .button.enable }}
+                <a href="{{ .button.link }}" class="btn btn-primary">{{ .button.text }}</a>
+                {{ end }}
+            </div>
+			{{ "<!-- philosophy image -->" | safeHTML }}
+			<div class="col-lg-5 align-self-center order-1 order-lg-2 mb-md-50">
+				{{ partial "image.html" (dict "Src" .image "Alt" "philosophy-image" "Class" `w-100`) }}
+			</div>
+		</div>
+	</div>
+</section>
+{{ "<!-- /philosophy -->" | safeHTML }}
+{{ end }}
+{{ end }}
+{{ with .Params.compliance_cards }}
+{{ "<!-- compliance cards -->" | safeHTML }}
+<section class="section pt-0">
+    <div class="container">
+        <div class="row">
+            {{ range . }}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-secondary p-4 h-100">
+                    <div class="card-body d-flex flex-column h-100">
+                        <i class="{{.icon}} mb-4 text-white mx-auto" style="font-size:x-large;"></i>
+                        <h4 class="text-white">{{ .title | markdownify }}</h4>
+                        <p class="text-white">{{ .content | markdownify }}</p>
+                        <a href="{{ .button_link }}" class="btn btn-primary mt-auto" target="_blank">{{ .button_text }}</a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ "<!-- /compliance cards -->" | safeHTML }}
+{{ end }}
+
+{{ with .Params.book_1 }}
+{{ "<!-- book demo section -->" | safeHTML }}
+<section class="cta overlay-primary py-50 text-center text-lg-start" {{ partial `bg-image.html` (dict `Src` .bg_image )
+	| safeHTMLAttr }}>
+    <div class="container">
+        <div class="row justify-content-between">
+            
+            <div class="col-lg-7">
+                <h3 class="text-white">{{ .title | markdownify }}</h3>
+                <p class="text-white">{{ .description | markdownify }}</p>
+            </div>
+            <div class="col-lg-4 align-self-center text-lg-end">
+                <a href="{{ .button_link | safeURL }}" class="btn btn-light">{{ .button_text }}</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{{end}}
+
+{{with .Params.article_cards }}
+<section class="bg-secondary py-50">
+<div class="container">
+    <div class="row">
+  
+        {{ range . }}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card bg-light p-4 h-100">
+                <div class="card-body d-flex flex-column h-100">
+                    <i class="{{.icon}} mb-4 text-primary mx-auto" style="font-size:x-large;"></i>
+                    <h4>{{ .title | markdownify }}</h4>
+                    <p>{{ .content | markdownify }}</p>
+                    <a href="{{ .button_link }}" class="btn btn-primary mt-auto" target="_blank">{{ .button_text }}</a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+</section>
+{{end}}
+
+
+{{ with .Params.book_2 }}
+{{ "<!-- book demo section -->" | safeHTML }}
+<section class="cta overlay-primary py-50 text-center text-lg-start" {{ partial `bg-image.html` (dict `Src` .bg_image )
+	| safeHTMLAttr }}>
+    <div class="container">
+        <div class="row justify-content-between">
+            
+            <div class="col-lg-7">
+                <h3 class="text-white">{{ .title | markdownify }}</h3>
+                <p class="text-white">{{ .description | markdownify }}</p>
+            </div>
+            <div class="col-lg-4 align-self-center text-lg-end">
+                <a href="{{ .button_link | safeURL }}" class="btn btn-light">{{ .button_text }}</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{{end}}
+
+{{ with .Params.conclusion}}
+    <section class="section">
+<div class="container">
+    <h2>{{.title}}</h2>
+    <p>{{.content}}</p>                                                                                                                                                                                                                                                                                                                             
+    <a href="{{.button.link | relURL}}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{.button.text}}</a>
+</div>
+
+    </section>
+{{end}}
+
+{{ with .Params.funfacts }}
+{{ if .enable }}
+{{ "<!-- funfacts -->" | safeHTML }}
+<section class="fun-facts overlay-dark section-sm" {{ partial `bg-image.html` (dict `Src` .bg_image ) | safeHTMLAttr }}>
+	<div class="container">
+		<div class="row">
+			{{ range .counter }}
+			<div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+				<div
+					class="d-flex flex-sm-row flex-column justify-content-lg-center align-items-center text-center text-sm-start">
+					<i class="round-icon {{ .icon }} me-sm-3 me-0 mb-3 mb-sm-0"></i>
+					<div class="text-center text-sm-start">
+						<h2 class="counter text-white mb-0" data-counter-time="1800">{{ .count }}</h2>
+						<p class="text-white mb-0">{{ .title }}</p>
+					</div>
+				</div>
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</section>
+{{ "<!-- /funfacts -->" | safeHTML }}
+{{ end }}
+{{ end }}
+
+<!-- skill -->
+{{ if .Params.skill.enable }}
+{{ if .Params.skill.inherit_homepage }}
+{{ with .GetPage "/" }}
+{{ partial "components/skill.html" . }}
+{{ end }}
+{{ else }}
+{{ partial "components/skill.html" . }}
+{{ end }}
+{{ end }}
+
+{{ end }}

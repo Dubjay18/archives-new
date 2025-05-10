@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="section">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+        {{ with .Params.youtube_link }}
+            <div class="w-fit" style="width: fit-content;">
+                <iframe width="560" height="315" 
+                        src={{.}}
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        {{ end }}
+
+        </div>
+        {{.Content}}
+
+        <div class="mt-2">
+            {{with .Params.button}}
+                <a href="{{.link}}" class="btn btn-primary" >
+                    {{.label}}
+                </a>
+            {{end}}
+           
+        </div>
+    </div>
+    </section>
+{{end}}

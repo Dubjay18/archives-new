@@ -1,0 +1,46 @@
+{{define "main"}}
+<div class="container mx-auto">
+    <div class="row">
+    
+    <div id="accordion" class="mb-md-50 col-lg-7 mx-auto my-5">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <!-- collapse cards -->
+        {{ range $index, $faq := .Params.faq.items }}
+        {{ $i := add $index 1 }}
+        <div class="card border-0 mb-4{{ if eq (mod $i 5) 0 }} mb-5{{ end }}">
+            <div class="card-header bg-gray border p-0">
+                <a class="card-link h5 d-block text-dark mb-0 py-10 px-4 collapsed" aria-expanded="false" data-bs-toggle="collapse" href="#collapse{{ $index }}">
+                    <i class="ti-plus text-primary me-2"></i>  {{ $faq.question }}
+                </a>
+            </div>
+            <div id="collapse{{$index}}" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    {{ $faq.answer | markdownify }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Change icon when accordion items are shown/hidden
+            const accordionItems = document.querySelectorAll('#accordion .collapse');
+            
+            accordionItems.forEach(item => {
+                item.addEventListener('show.bs.collapse', function() {
+                    const icon = this.previousElementSibling.querySelector('i');
+                  
+                    icon.classList.replace('ti-plus', 'ti-minus');
+
+                });
+                
+                item.addEventListener('hide.bs.collapse', function() {
+                    const icon = this.previousElementSibling.querySelector('i');
+                    icon.classList.replace('ti-minus', 'ti-plus');
+                });
+            });
+        });
+        </script>
+{{end}}

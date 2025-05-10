@@ -1,0 +1,45 @@
+<div class="job-filters mb-5">
+    <div class="card">
+      <div class="card-body">
+        <form id="jobFilterForm" class="row g-3">
+          <!-- Department Filter -->
+          <div class="col-md-4">
+            <label for="department" class="form-label">Department</label>
+            <select id="department" class="form-select">
+              <option value="">All Departments</option>
+              {{ range .Site.Taxonomies.departments }}
+              <option value="{{ .Page.Title }}">{{ .Page.Title }}</option>
+              {{ end }}
+            </select>
+          </div>
+          
+          <!-- Location Filter -->
+          <div class="col-md-4">
+            <label for="location" class="form-label">Location</label>
+            <select id="location" class="form-select">
+              <option value="">All Locations</option>
+              {{ range .Site.Taxonomies.locations }}
+              <option value="{{ .Page.Title }}">{{ .Page.Title }}</option>
+              {{ end }}
+            </select>
+          </div>
+          
+          <!-- Job Type Filter -->
+          <div class="col-md-4">
+            <label for="jobType" class="form-label">Job Type</label>
+            <select id="jobType" class="form-select">
+              <option value="">All Types</option>
+              {{ range .Site.Taxonomies.types }}
+              <option value="{{ .Page.Title }}">{{ .Page.Title }}</option>
+              {{ end }}
+            </select>
+          </div>
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Filter Jobs</button>
+            <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

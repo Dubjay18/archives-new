@@ -1,0 +1,68 @@
+{{ define "main" }}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <article class="career-page">
+        <!-- Intro Section -->
+        <section class="mb-5">
+          
+          <div class="content">
+            {{ .Content }}
+          </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="mb-5 py-4">
+          <!-- <h2 class="text-center mb-5">Our Core Values</h2> -->
+          <div class="row g-4">
+            {{ range  $index, $element :=  .Params.values }}
+      
+			<div class="row align-items-center mb-10 ">
+				<div class="col-lg-6 {{if eq (mod $index 2) 1}}order-lg-2{{end}}">
+					{{ partial "image.html" (dict "Src" .image "Alt" .title "Class" "img-fluid") }}
+				</div>
+				<div class="col-lg-6 {{if eq (mod $index 2) 1}}order-lg-1{{end}} rounded p-sm-5 px-3 py-5 bg-secondary">
+					<h3 class="mb-4 text-white">{{ .title | markdownify }}</h3>
+					<p class="text-white">{{ .description | markdownify }}</p>
+				
+				</div>
+			</div>
+
+		
+            {{ end }}
+          </div>
+        </section>
+
+        <!-- Perks Section -->
+        <section class="mb-5 py-4 bg-light rounded-3 p-4">
+          <span style="font-size: 30px;">We currently have no open positions.</span>
+          </br></br>
+          <span style="font-size: 14px;"></span>Please check back as we will most certainly be looking for great people to join our team in  the future.</span>
+          <!-- <h2 class="text-center mb-5">Perks and Benefits</h2>
+          <div class="row g-4">
+            {{ range .Params.perks }}
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h5">{{ .title }}</h3>
+                  <p class="card-text">{{ .description }}</p>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div> -->
+        </section>
+
+        <!-- CTA Section -->
+        <!-- <section class="text-center py-5 my-4 bg-primary text-white rounded-3">
+          <h2 class="mb-4 font-bold text-white">Find Your Fit</h2>
+          <p class="lead mb-4 text-white px-2">If our values resonate with you, why not see if there's an opportunity to hop on board? We're looking to fill key roles with the best talent on the market.</p>
+          <a href={{"/jobs" | relURL}} class="btn btn-light btn-lg px-4">
+            Browse Open Roles
+          </a>
+        </section> -->
+      </article>
+    </div>
+  </div>
+</div>
+{{ end }}
