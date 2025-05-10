@@ -13,8 +13,7 @@ logo_webp = false
 # logo text will only show when logo is missing.
 logo_text = "Aleph Archives"
 # recaptcha
-
-recaptcha_key="6Leb4zQrAAAAANzZs2h6fLpfcXVH2FhKuQ8xpNaA"
+recaptcha_key="6LeqqjQrAAAAAIvNyZeVZQ9t-_y4qoRJmqX__mm6"
 # purgeCSS
 purge_css = true
 # Main Sections
@@ -22,7 +21,7 @@ mainSections = ["blog"]
 # image gallery shortcode
 image_gallery = true
 # contact form action
-contact_form_action = "https://submit-form.com/31ehfdoym" # contact form works with [https://airform.io/] or [https://formspree.io]
+contact_form_action = "https://submit-form.com/qJjqooHl8" # contact form works with [https://airform.io/] or [https://formspree.io]
 # google tag manager, see https://developers.google.com/tag-manager/
 google_adsense = "" # example: ca-pub-xxxxxxxxxxxxxxxx
 google_tag_manager = "" # example: G-XXXXXXXXXX
